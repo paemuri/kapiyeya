@@ -1,0 +1,18 @@
+{{ define "title" -}}
+{{ .Title }}
+{{- end }}
+
+{{ define "main" -}}
+<article class='entry'>
+	<div class='entryhead'>
+		<div class='icon'>
+			<img src='/images/blog/happy-icon.jpg' width='80' alt=''>
+		</div>
+		<div class='header'>
+			<h2>Go check them out!</h2>
+		</div>
+	</div>
+	<div class='text'>{{ .Content }}</div>
+</article>
+<div id='credit'><a href='https://repth.neocities.org/index.html'>©repth</a></div>
+{{- end }}

@@ -1,0 +1,56 @@
+#!/bin/sh
+set -eu
+
+cd "$(dirname "$0")"
+
+# SuperHTML can't parse Hugo's Go templates, so only format content bodies.
+tmpdir=$(mktemp -d)
+trap 'rm -rf "$tmpdir"' EXIT HUP INT TERM
+find content -type f -name "*.html" -exec sh -c '
+	set -eu
+	tmpdir=$1
+	shift
+
+	new=
+	trap "if [ -n \"\$new\" ]; then rm -f \"\$new\"; fi" EXIT HUP INT TERM
+
+	for file do
+		front="$tmpdir/front"
+		body="$tmpdir/body"
+		formatted="$tmpdir/formatted"
+
+		first=$(head -n 1 "$file" | tr -d "\r")
+		if [ "$first" = "---" ]; then
+			closing=$(grep -n "^---[[:space:]]*$" "$file" | sed -n "2p" | cut -d: -f1)
+			if [ -z "$closing" ]; then
+				printf "%s: unterminated front matter\n" "$file" >&2
+				exit 1
+			fi
+			head -n "$closing" "$file" > "$front"
+			tail -n "+$((closing + 1))" "$file" > "$body"
+		else
+			: > "$front"
+			cp "$file" "$body"
+		fi
+
+		if ! superhtml fmt --stdin --syntax-only < "$body" > "$formatted"; then
+			printf "%s: superhtml failed\n" "$file" >&2
+			exit 1
+		fi
+
+		new=$(mktemp "${file}.XXXXXX")
+		cp -p "$file" "$new"
+		cat "$front" "$formatted" > "$new"
+
+		if cmp -s "$file" "$new"; then
+			rm -f "$new"
+			new=
+		else
+			mv "$new" "$file"
+			new=
+			printf "%s\n" "$file"
+		fi
+	done
+' sh "$tmpdir" {} +
+
+standard --fix static/scripts

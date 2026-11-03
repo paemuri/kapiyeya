@@ -1,0 +1,15 @@
+<div class='entryhead'>
+	<div class='icon'>
+		{{ $mood := .Param "mood-image" | default "neutral" }}
+		<img src='/images/blog/{{ $mood }}-icon.jpg' width='80' alt=''>
+	</div>
+	<div class='date'>
+		<p><span class='datecolor'><b>Date:</b></span>
+		{{ .Date.Format "02 Jan 2006" }}</p>
+		<p><span class='datecolor'><b>Mood:</b></span>
+		{{ .Param "mood-desc"  }}</p>
+	</div>
+	<div class='header'>
+		<h2>{{ .Title }}</h2>
+	</div>
+</div>

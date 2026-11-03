@@ -1,0 +1,18 @@
+title = 'Pieces of my mind'
+baseURL = 'https://kapiyeya.com'
+locale = 'en-US'
+disableKinds = ['taxonomy', 'term']
+
+[params]
+description = "Kapiyeya's personal website."
+
+[params.author]
+name = 'Gabriela Zichia'
+email = 'kapiyeya@proton.me'
+
+[params.webmaster]
+name = 'Rafael Zichia'
+email = 'rafael@paemuri.com'
+
+[security]
+allowContent = ['^text/html$', '^text/markdown$']

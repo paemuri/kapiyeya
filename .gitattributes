@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+*.secret binary
+*.gpg binary
+*.kbx binary

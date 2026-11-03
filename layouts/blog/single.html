@@ -1,0 +1,10 @@
+{{ define "title" -}}
+{{ .Title }}
+{{- end }}
+
+{{ define "main" -}}
+<article class='entry'>
+	{{ partial "article-header.html" . }}
+	<div class='text'>{{ .Content }}</div>
+</article>
+{{- end }}

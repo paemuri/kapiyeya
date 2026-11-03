@@ -1,0 +1,350 @@
+/*
+ * Main section: new-style pages.
+ */
+
+:root {
+  --color-bg: #fcdae5;
+  --color-text: #68625a;
+  --color-accent: #c96984;
+  --color-muted: #999;
+  --color-link: #333;
+  --color-line: #999;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  text-shadow: 0 0 0 #bbb;
+  font-family: 'Crimson Text', Verdana, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  margin: 0;
+  text-align: justify;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  background: #ddd;
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f8f8f8;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
+
+#container {
+  max-width: 660px;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+header {
+  text-align: center;
+  padding: 16px 8px;
+}
+
+header img {
+  max-width: 100%;
+  height: auto;
+}
+
+.site-name {
+  margin-top: 10px;
+  font: 28px 'Homemade Apple', cursive;
+  letter-spacing: 3px;
+  color: var(--color-accent);
+}
+
+.slogan {
+  margin-top: 5px;
+  font: italic 12px Georgia, Arial, sans-serif;
+  color: var(--color-muted);
+}
+
+nav {
+  text-align: center;
+  padding: 6px 4px;
+  margin-bottom: 10px;
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 6px;
+  margin-right: 4px;
+  background: #fff;
+  border-radius: 5px;
+  color: var(--color-accent);
+  font: italic 12px Georgia, Arial, sans-serif;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+}
+
+nav a img {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+#content {
+  display: flex;
+  gap: 10px;
+  border-top: 1px dotted var(--color-line);
+  border-bottom: 1px dotted var(--color-line);
+  padding: 10px 0;
+}
+
+.sidebar {
+  width: 150px;
+  padding: 4px;
+}
+
+.sidebar > div {
+  margin-bottom: 8px;
+}
+
+.sidebar img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sidebar iframe {
+  max-width: 100%;
+}
+
+.title {
+  margin-bottom: 4px;
+  color: var(--color-accent);
+  font: 20px 'New Rocker', cursive;
+  text-align: left;
+}
+
+.divider {
+  height: 0;
+  margin: 6px 0;
+  border-bottom: 1px dotted var(--color-line);
+}
+
+main {
+  flex: 1;
+  padding: 8px;
+  border-left: 1px dotted var(--color-line);
+  border-right: 1px dotted var(--color-line);
+}
+
+main img {
+  max-width: 100%;
+  height: auto;
+}
+
+main .results {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.main-title {
+  margin: 0 0 6px;
+  color: var(--color-accent);
+  font: 25px 'New Rocker', cursive;
+  letter-spacing: 2px;
+  line-height: 18px;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.ascii-art {
+  margin: 0;
+  padding: 2px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: left;
+  text-shadow: none;
+  white-space: pre;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gifypet-frame {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+@media (orientation: portrait) {
+  .gifypet-frame {
+    display: none;
+  }
+}
+
+/*
+ * Sitemap list.
+ */
+
+.section {
+  margin: 0;
+}
+
+.lists__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lists__list .lists__list {
+  margin: .15rem 0 .35rem;
+  padding-left: 1.25rem;
+}
+
+.lists__list > li {
+  margin: .2rem 0;
+}
+
+.lists__list > li::before {
+  content: '♡';
+  margin-right: .4rem;
+  color: var(--color-accent);
+}
+
+/*
+ * Horoscope.
+ */
+
+.horoscope-positions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.horoscope-position {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: 1.25rem;
+}
+
+.horoscope-position img {
+  vertical-align: middle;
+}
+
+.horoscope-map {
+  width: min(600px, 100%);
+  aspect-ratio: 1;
+  margin: 1rem auto;
+  border: 2.5px solid var(--color-line);
+  border-radius: 100%;
+  background-image: url('/images/horoscope-map.png');
+  background-size: 130%;
+  background-position: center center;
+}
+
+/*
+ * Wide variant: /playground.
+ */
+
+body.wide #container {
+  max-width: 1200px;
+}
+
+body.wide .sidebar {
+  width: 250px;
+}
+
+/*
+ * Medium-wide variant: /rescue.
+ */
+
+body.wide-medium #container {
+  max-width: 960px;
+}
+
+body.wide-medium .sidebar {
+  width: 200px;
+}
+
+/*
+ * Paemuri theme: /shrines/paemuri.
+ */
+
+body.theme-paemuri {
+  --color-bg: #fdf4c1;
+  --color-text: #282828;
+  --color-accent: #79740e;
+  --color-muted: #999;
+  --color-link: #333;
+  --color-line: #999;
+}
+
+body.theme-paemuri nav a {
+  color: #c96984;
+}
+
+@media (max-width: 600px) {
+  #content {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sidebar,
+  body.wide .sidebar,
+  body.wide-medium .sidebar {
+    width: auto;
+    padding: 4px;
+  }
+
+  main {
+    padding: 8px;
+    border-left: none;
+    border-right: none;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+
+  nav a {
+    justify-content: center;
+    width: 100%;
+    margin: 4px 0;
+  }
+}

@@ -1,0 +1,13 @@
+{{ define "title" -}}
+{{ .Title }}
+{{- end }}
+
+{{ define "main" -}}
+{{- range.Pages }}
+<article class='entry'>
+	{{ partial "article-header.html" . }}
+	<div class='text'>{{ .Summary }}</div>
+	<a href='{{ .RelPermalink }}'>Continue reading...</a>
+</article>
+{{- end }}
+{{- end }}

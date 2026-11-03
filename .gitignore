@@ -1,0 +1,9 @@
+/.gitsecret/keys/random_seed
+/.gitsecret/keys/pubring.kbx~
+!*.secret
+/deploy
+/public
+/resources
+/assets
+hugo_stats.json
+/.hugo_build.lock
